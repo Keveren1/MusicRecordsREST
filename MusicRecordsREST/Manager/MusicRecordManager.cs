@@ -42,13 +42,34 @@ namespace MusicRecordsREST.Manager
                 result = result.FindAll(filterPublicationYear =>
                     filterPublicationYear.PublicationYear == PublicationYear);
             }
-            {
-                
-            }
 
             return result;
         }
 
+        public MusicRecordsData AddMusicRecord(MusicRecordsData newMusicRecord)
+        {
+            data.Add(newMusicRecord);
+            return newMusicRecord;
+        }
 
+        public MusicRecordsData DeleteMusicRecord(string title)
+        {
+            MusicRecordsData musicRecordsData = data.Find(musicRecordsData => musicRecordsData.Title == title);
+            data.Remove(musicRecordsData);
+            return musicRecordsData; 
+        }
+
+        public MusicRecordsData Update(string title, MusicRecordsData updates)
+        {
+            MusicRecordsData music = data.Find(music1 => music1.Title == title);
+            if (music == null) return null;
+            music.Title = updates.Title;
+            music.Artist = updates.Artist;
+            music.Duration = updates.Duration;
+            music.PublicationYear = updates.PublicationYear;
+            return music; 
+        }
+        
+        
     }
 }
