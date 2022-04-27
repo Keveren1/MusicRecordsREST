@@ -12,7 +12,13 @@ namespace MusicRecordsREST.Controllers
     [ApiController]
     public class MusicRecordController : Controller
     {
-        private MusicRecordManager _recordManager = new MusicRecordManager();
+
+        private MusicRecordDBManager _recordManager;
+
+        public MusicRecordController(MusicRecordContext context)
+        {
+            _recordManager = new MusicRecordDBManager(context);
+        }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace MusicRecordsREST
 {
@@ -36,6 +37,9 @@ namespace MusicRecordsREST
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MusicRecordsREST", Version = "v1" });
             });
+
+            services.AddDbContext<MusicRecordContext>(opt => opt.UseSqlServer(MusicRecordContext.ConnectionString));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

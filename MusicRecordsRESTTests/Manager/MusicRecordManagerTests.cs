@@ -16,7 +16,7 @@ namespace MusicRecordsREST.Manager.Tests
         [TestInitialize()]
         public void SetUp()
         {
-            _recordManager = new MusicRecordManager();
+            //_recordManager = new MusicRecordManager();
         }
         [TestMethod()]
         public void GetAllTest()
